@@ -937,8 +937,7 @@
       --font-size-lg: 1.125rem;
       --font-size-xl: 1.25rem;
       --font-size-2xl: 1.5rem;
-      
-      /* وزن فونت‌های سیستماتیک */
+
       --font-weight-normal: 400;
       --font-weight-medium: 500;
       --font-weight-semibold: 600;
@@ -1934,19 +1933,7 @@
     "Ts": ["تنسین", "Tennessine", "Ts", "ts", "۱۱۷", "117", "گروه۱۷", "group17", "دوره۷", "period7", "تناوب۷", "ردیف۷", "هالوژن", "هالوژنها", "halogen", "رادیواکتیو", "radioactive"],
     "Og": ["اوگانسون", "Oganesson", "Og", "og", "۱۱۸", "118", "گروه۱۸", "group18", "دوره۷", "period7", "تناوب۷", "ردیف۷", "گاز نجیب", "گازهای نجیب", "noble gas", "noble gases", "رادیواکتیو", "radioactive"]
 };
-// --- END OF INLINED JSON DATA ---
 
-// --- START OF COMBINED JAVASCRIPT LOGIC ---
-
-    // ======================================================
-    // SECTION 1: FUNCTION DEFINITIONS
-    // (from table.js, search.js, detail-panel.js)
-    // ======================================================
-
-    /**
-     * Creates and populates the periodic table on the page.
-     * @param {object} elementsData - The data for all chemical elements.
-     */
     function buildPeriodicTable(elementsData) {
       console.log("🏗️ در حال ساخت جدول تناوبی...");
       const mainTable = document.getElementById("periodicTable");
@@ -1987,11 +1974,6 @@
       console.log("✅ جدول تناوبی ساخته شد");
     }
 
-    /**
-     * Creates a single element cell div.
-     * @param {object} element - The data for one element.
-     * @returns {HTMLElement} The created div element.
-     */
     function createCell(element) {
       const cell = document.createElement("div");
       cell.className = `element-cell ${element.category?.replace(/\s+/g, "-") || 'unknown'}`;
@@ -2015,20 +1997,11 @@
       return cell;
     }
 
-    /**
-     * Normalizes a string for searching (lowercase, no spaces, Persian numbers to English).
-     * @param {string} str - The input string.
-     * @returns {string} The normalized string.
-     */
     function normalizeString(str) {
       if (!str) return "";
       return str.toString().toLowerCase().replace(/\s+/g, '').replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
     }
 
-    /**
-     * Initializes the search functionality.
-     * @param {object} aliasesData - The search aliases for elements.
-     */
     function initSearch(aliasesData) {
       const searchInput = document.getElementById("searchInput");
       const clearBtn = document.getElementById("clearSearch");
@@ -2047,12 +2020,6 @@
       console.log("✅ سیستم جستجو فعال شد.");
     }
 
-    /**
-     * Filters elements based on the search query.
-     * @param {string} query - The search term.
-     * @param {object} aliasesData - The search aliases.
-     * @param {HTMLElement[]} cells - The array of element cells.
-     */
     function performSmartSearch(query, aliasesData, cells) {
       const normalizedQuery = normalizeString(query);
       if (!normalizedQuery) {
@@ -2066,19 +2033,11 @@
         cell.classList.toggle("search-no-match", !isMatch);
       });
     }
-
-    /**
-     * Removes all search filters from the cells.
-     * @param {HTMLElement[]} cells - The array of element cells.
-     */
+    
     function resetSearch(cells) {
       cells.forEach(cell => cell.classList.remove("search-no-match"));
     }
     
-    /**
-     * Renders the atomic model visualization for an element.
-     * @param {object} element - The data for one element.
-     */
     function renderProperAtomicModel(element) {
         const container = document.getElementById("atomicModel");
         if (!container) return;
@@ -2115,10 +2074,6 @@
         });
     }
     
-    /**
-     * Opens the detail panel with the information of the selected element.
-     * @param {object} element - The data for the clicked element.
-     */
     window.openDetailPanel = function(element) {
       const detailPanel = document.getElementById("detailPanel");
       const detailContent = detailPanel?.querySelector(".detail-content");
@@ -2151,19 +2106,11 @@
       detailPanel.classList.remove("hidden");
     }
 
-    /**
-     * Closes the detail panel.
-     */
     function closeDetailPanel() {
       const detailPanel = document.getElementById("detailPanel");
       if (detailPanel) detailPanel.classList.add("hidden");
     }
 
-
-    // ======================================================
-    // SECTION 2: MAIN EXECUTION AND EVENT LISTENERS
-    // (from app.js, responsive.js, and detail-panel.js listeners)
-    // ======================================================
     
     document.addEventListener("DOMContentLoaded", () => {
       try {
@@ -2173,13 +2120,10 @@
             throw new Error("داده‌های عناصر (elementsData یا aliasesData) تعریف نشده‌اند.");
         }
 
-        // 1. ساخت جدول تناوبی
         buildPeriodicTable(elementsData);
 
-        // 2. فعال‌سازی سیستم جستجو
         initSearch(aliasesData);
         
-        // 3. راه‌اندازی شنونده‌های رویداد برای پنل جزئیات
         const detailPanel = document.getElementById("detailPanel");
         if (detailPanel) {
           detailPanel.addEventListener("click", (event) => {
@@ -2194,7 +2138,6 @@
           }
         });
 
-        // 4. مدیریت لودینگ تصویر لوگو
         const logoImage = document.querySelector('.logo-image');
         if (logoImage) {
           logoImage.addEventListener('load', () => logoImage.classList.add('loaded'));
@@ -2208,7 +2151,6 @@
         document.body.innerHTML = '<h1 style="color: red; text-align: center; margin-top: 50px;">خطا در بارگذاری برنامه.</h1>';
       }
     });
-    // --- END OF COMBINED JAVASCRIPT LOGIC ---
 </script>
 </body>
 </html>
