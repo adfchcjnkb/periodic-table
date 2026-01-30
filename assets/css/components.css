@@ -1,0 +1,520 @@
+/* ======================================================
+   components.css
+   ====================================================== */
+
+:root {
+  --element-size-desktop: 68px;
+  --element-gap-desktop: 4px;
+  --font-size-symbol-desktop: 1.2rem;
+  --font-size-name-desktop: 0.55rem;
+  --font-size-atomic-desktop: 0.7rem;
+  --border-radius-element-desktop: 8px;
+}
+
+/* سلول‌های عناصر  */
+.element-cell { 
+  position: relative; 
+  overflow: hidden;
+  border-radius: var(--border-radius-element-desktop); 
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.4em 0.3em;
+  text-align: center;
+  min-height: var(--element-size-desktop);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--font-family);
+}
+
+/* هاور افکت  */
+.element-cell::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.6s ease;
+  z-index: 1;
+}
+
+.element-cell:hover::before {
+  left: 100%;
+}
+
+.element-cell:hover { 
+  transform: scale(1.15); 
+  z-index: 50; 
+  box-shadow: 
+    0 8px 30px rgba(0, 212, 255, 0.6),
+    0 0 0 3px rgba(0, 212, 255, 0.4);
+}
+
+.element-cell .atomic-number {
+  position: absolute;
+  top: 0.4em;
+  right: 0.5em;
+  font-size: var(--font-size-atomic-desktop);
+  font-weight: 800;
+  opacity: 0.95;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.element-cell .symbol {
+  font-size: var(--font-size-symbol-desktop);
+  font-weight: 900;
+  line-height: 1;
+  margin-top: auto;
+  margin-bottom: 0.2em;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  letter-spacing: -0.02em;
+  z-index: 2;
+}
+
+.element-cell .fa-name {
+  font-size: var(--font-size-name-desktop);
+  font-weight: 700;
+  line-height: 1.2;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 0.3em;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+/* رنگ بندی گروه های مختلف  */
+.فلز-قلیایی { 
+  background: linear-gradient(135deg, #ff6b35, #ff8e35);
+  border-color: rgba(255, 107, 53, 0.5);
+}
+.فلز-قلیایی-خاکی { 
+  background: linear-gradient(135deg, #ffd166, #ffb347);
+  border-color: rgba(255, 209, 102, 0.5);
+}
+.فلز-انتقالی { 
+  background: linear-gradient(135deg, #118ab2, #06d6a0);
+  border-color: rgba(17, 138, 178, 0.5);
+}
+.لانتانید { 
+  background: linear-gradient(135deg, #7209b7, #4361ee);
+  border-color: rgba(114, 9, 183, 0.5);
+}
+.آکتینید { 
+  background: linear-gradient(135deg, #f72585, #b5179e);
+  border-color: rgba(247, 37, 133, 0.5);
+}
+.فلز, .شبه‌فلز { 
+  background: linear-gradient(135deg, #06d6a0, #118ab2);
+  border-color: rgba(6, 214, 160, 0.5);
+}
+.نافلز { 
+  background: linear-gradient(135deg, #ffd166, #ef476f);
+  border-color: rgba(255, 209, 102, 0.5);
+}
+.هالوژن { 
+  background: linear-gradient(135deg, #ef476f, #ff6b35);
+  border-color: rgba(239, 71, 111, 0.5);
+}
+.گاز-نجیب { 
+  background: linear-gradient(135deg, #7209b7, #3a0ca3);
+  border-color: rgba(114, 9, 183, 0.5);
+}
+/* مدل اتمی */
+.atomic-model { 
+  position: relative; 
+  width: 280px; 
+  height: 280px; 
+  margin: 2rem auto;
+  flex-shrink: 0;
+}
+
+.nucleus { 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  width: 50px; 
+  height: 50px; 
+  background: radial-gradient(circle, #ff6b9a, #ff2a6d); 
+  border-radius: 50%; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  font-weight: 900; 
+  color: white; 
+  z-index: 10; 
+  font-size: 1.3rem; 
+  box-shadow: 
+    0 0 25px #ff2a6d,
+    0 0 40px rgba(255, 42, 109, 0.6);
+  animation: nucleusPulseDesktop 4s ease-in-out infinite;
+}
+
+@keyframes nucleusPulseDesktop {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 
+      0 0 25px #ff2a6d,
+      0 0 40px rgba(255, 42, 109, 0.6);
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 
+      0 0 35px #ff2a6d,
+      0 0 55px rgba(255, 42, 109, 0.8);
+  }
+}
+
+.shell { 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  border: 2px solid rgba(0, 212, 255, 0.6); 
+  border-radius: 50%;
+  animation: shellRotateDesktop 35s linear infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes shellRotateDesktop {
+  from { 
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to { 
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.electron-orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.electron {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #05d9e8, #00a2ff);
+  border-radius: 50%;
+  margin-left: -6px;
+  margin-top: -6px;
+  box-shadow: 
+    0 0 15px #05d9e8,
+    0 0 25px rgba(5, 217, 232, 0.7);
+  animation: electronGlowDesktop 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes electronGlowDesktop {
+  from { 
+    box-shadow: 
+      0 0 12px #05d9e8,
+      0 0 20px rgba(5, 217, 232, 0.6);
+  }
+  to { 
+    box-shadow: 
+      0 0 18px #05d9e8,
+      0 0 30px rgba(5, 217, 232, 0.8),
+      0 0 45px rgba(5, 217, 232, 0.5);
+  }
+}
+
+.detail-panel .element-info {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.8rem;
+  border-radius: 14px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.detail-panel .element-info p {
+  margin: 0.8rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+}
+
+.detail-panel .element-info strong {
+  min-width: 130px;
+  color: #00d4ff;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* استایل لوگو */
+.site-header .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: transparent;
+  background: linear-gradient(135deg, #00d4ff, #05d9e8);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.logo-image {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid #00d4ff;
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 
+    0 0 30px rgba(0, 212, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ناوبری اصلی */
+.main-nav a {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+}
+
+.main-nav a:hover {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(5, 217, 232, 0.2));
+  color: #00d4ff;
+  border-color: rgba(0, 212, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+}
+
+/* جستجو - طراحی جدید */
+.search-box input {
+  padding: 0.9rem 1.3rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: rgba(35, 35, 46, 0.9);
+  color: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 15px rgba(221, 191, 191, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+}
+
+.search-box input:focus {
+  border-color: #00d4ff;
+  box-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  outline: none;
+  background: rgba(50, 50, 70, 0.95);
+}
+
+.search-box button {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.search-box button:hover {
+  background: rgba(200, 246, 255, 0.2);
+  color: #00d4ff;
+  transform: scale(1.1);
+}
+
+/* پنل جزئیات */
+.detail-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.95);
+  background: rgba(15, 15, 25, 0.98);
+  backdrop-filter: blur(40px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  padding: 2.5rem;
+  border-radius: 18px;
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.detail-panel:not(.hidden) {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.detail-panel #closeDetail {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  background: linear-gradient(135deg, #ef476f, #ff6b35);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  z-index: 2;
+  box-shadow: 0 4px 15px rgba(239, 71, 111, 0.4);
+}
+
+.detail-panel #closeDetail:hover {
+  transform: scale(1.15) rotate(90deg);
+  box-shadow: 0 6px 20px rgba(239, 71, 111, 0.6);
+}
+
+.detail-panel h2 {
+  font-size: 2.2rem;
+  background: linear-gradient(135deg, #00d4ff, #05d9e8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.detail-panel p {
+  margin: 0.7rem 0;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.detail-panel p strong {
+  color: #00d4ff;
+  margin-left: 10px;
+  font-weight: 700;
+}
+
+.detail-panel ul {
+  padding-right: 20px;
+  list-style-type: '— ';
+  margin-top: 0.7rem;
+}
+
+.detail-panel li {
+  margin-bottom: 0.4rem;
+  color: rgba(255, 255, 255, 0.8);
+  padding-right: 8px;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+/*فوتتر */
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.site-footer h4 {
+  color: #00d4ff;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+.site-footer p {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+}
+
+.series-container {
+  direction: ltr !important;
+  justify-content: flex-start !important;
+}
+
+.element-row {
+  direction: ltr !important;
+  justify-content: flex-start !important;
+  display: grid !important;
+  grid-template-columns: repeat(15, 1fr) !important;
+  gap: var(--element-gap-desktop) !important;
+}
+
+.element-row .element-cell {
+  direction: rtl; 
+}
+
+.element-row {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  flex-wrap: nowrap !important;
+}
+
+.element-row .element-cell {
+  flex-shrink: 0 !important;
+}
+
+.element-cell.search-no-match {
+  opacity: 0.15;
+  filter: grayscale(80%);
+  transform: scale(0.92);
+  transition: all 0.4s ease-out;
+}
