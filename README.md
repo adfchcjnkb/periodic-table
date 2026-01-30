@@ -1,5 +1,9 @@
 # Mendeleev: Professional Interactive Periodic Table Platform
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/adfchcjnkb/periodic-table/refs/heads/main/main%20page%20(Desktop)%20.png" width="90%" alt="Main Desktop Interface">
+</p>
+
 Mendeleev is an advanced digital platform and comprehensive educational tool designed for the detailed study of the 118 chemical elements of the periodic table. This project serves as a high-fidelity alternative to static educational materials, offering a dynamic environment where users can interact with chemical data in real-time. The platform is engineered to meet the needs of students, academic researchers, and chemistry professionals by providing accurate scientific parameters and visual simulations.
 
 ### 🌐 [Access the Live Demonstration](https://adfchcjnkb.github.io/periodic-table/)
