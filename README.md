@@ -267,15 +267,13 @@ python run.py --reload --log-level debug
 
 For technical support, feature requests, or collaboration inquiries:
 
-- **GitHub Issues:** [Project Issues](https://github.com/adfchcjnkb/periodic-table/issues)
-- **Email:** development@mendeleev-project.ir
-- **Documentation:** [API Docs](http://localhost:8000/api/docs)
+- **Email:** arvinkheradmand28@gmail.com
 
 ---
 
 ## 📄 License & Copyright
 
-© 2024 Mendeleev Project Group. All rights reserved.
+©2026 Mendeleev Project Group. All rights reserved.
 
 - **Code License:** MIT License
 - **Scientific Data:** CC BY 4.0
